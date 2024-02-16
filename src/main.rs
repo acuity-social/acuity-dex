@@ -68,4 +68,8 @@ impl Application for AcuityDEX {
             .center_y()
             .into()
     }
+
+    fn theme(&self) -> Theme {
+        Theme::Dark
+    }
 }
