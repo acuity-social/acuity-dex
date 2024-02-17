@@ -3,7 +3,8 @@ use iced::widget::{button, column, container};
 use iced::window;
 use iced::{Alignment, Application, Command, Element, Length, Settings, Theme};
 
-pub fn main() -> iced::Result {
+#[tokio::main]
+async fn main() -> iced::Result {
     AcuityDEX::run(Settings::default())
 }
 
