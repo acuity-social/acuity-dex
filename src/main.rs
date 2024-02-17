@@ -2,9 +2,20 @@ use iced::executor;
 use iced::widget::{button, column, container};
 use iced::window;
 use iced::{Alignment, Application, Command, Element, Length, Settings, Theme};
+use tokio_tungstenite::connect_async;
+use tracing::info;
+use tracing_subscriber;
 
 #[tokio::main]
 async fn main() -> iced::Result {
+    tracing_subscriber::fmt::init();
+
+    let addr = "ws://0.0.0.0:4000".to_string();
+    // let url = url::Url::parse(&addr).unwrap();
+
+    let (ws_stream, _) = connect_async(addr).await.expect("Failed to connect");
+    info!("WebSocket handshake has been successfully completed");
+
     AcuityDEX::run(Settings::default())
 }
 
